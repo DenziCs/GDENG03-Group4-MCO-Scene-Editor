@@ -1,4 +1,4 @@
-Nathaniel Francis S. Filoteo | 
+Group 4 | 
 GDENG03 XX22 | 
 DirectX 3D Game Engine
 
