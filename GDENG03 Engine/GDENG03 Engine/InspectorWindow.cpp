@@ -4,6 +4,8 @@
 #include"AngleConverter.h"
 #include"ActionHistoryManager.h"
 #include"BackendManager.h"
+#include"SystemManager.h"
+#include"PhysicsSystem.h"
 #include<iostream>
 
 InspectorWindow::InspectorWindow(std::string name) : AUIPanel::AUIPanel(name) {}
@@ -18,8 +20,6 @@ void InspectorWindow::draw() {
 	ImGui::SetWindowSize(ImVec2(300, GlobalProperties::WINDOW_HEIGHT - 64));
 	ImGui::SetWindowPos(ImVec2(GlobalProperties::WINDOW_WIDTH - 321, 20));
 
-	if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
-
 	if (!GameObjectManager::getInstance()->getSelectedObject()) {
 		ImGui::TextWrapped("No object selected. Select an object from the scene.");
 	}
@@ -32,6 +32,8 @@ void InspectorWindow::draw() {
 		ImGui::SameLine();
 		ImGui::Text(selectedObject->getObjectName().c_str());
 		ImGui::Separator();
+
+		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled(); 
 
 		if (ImGui::Checkbox("Enabled", &mIsSelectedObjectActive)) {
 			updateObjectInfo(selectedObject);
@@ -53,13 +55,60 @@ void InspectorWindow::draw() {
 			std::cout << "Action taken: Modified scale." << std::endl;
 		}
 
+		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::EndDisabled(); 
+
+		ImGui::Text("Rigidbody: ");
+
+		if (mHasPhysicsComponent) {
+			if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
+
+			if (ImGui::Button("Detach"))
+				SystemManager::getInstance()->getPhysicsSystem()->unregisterComponent(mCurrentPhysicsComponent);
+
+			if (ImGui::Checkbox("Enabled", &mActiveBody))
+				mCurrentPhysicsComponent->setActive(mActiveBody);
+
+			if (ImGui::Checkbox("Is Static", &mStaticBody))
+				mCurrentPhysicsComponent->setStatic(mStaticBody);
+			
+			if (ImGui::Checkbox("Gravity Enabled", &mGravityBody))
+				mCurrentPhysicsComponent->enableGravity(mGravityBody);
+			
+			if (ImGui::InputFloat("Mass", &mBodyMass))
+				mCurrentPhysicsComponent->setMass(mBodyMass);
+
+			if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::EndDisabled();
+			
+			ImGui::DragFloat3("Applied Force Vector Components", mAppliedForce);
+			
+			if (ImGui::Button("Apply Force"))
+				mCurrentPhysicsComponent->applyForce(mAppliedForce[0], mAppliedForce[1], mAppliedForce[2]);
+		}
+
+		else {
+			ImGui::SameLine();
+			ImGui::Text("None");
+
+			if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
+
+			if (ImGui::Button("Add Physics Component")) {
+				PhysicsComponent* component = new PhysicsComponent(selectedObject->getObjectName() + " Physics");
+				selectedObject->attachComponent(component);
+			}
+
+			if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::EndDisabled();
+		}
+
+		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
+
 		if (ImGui::Button("Delete Object")) {
 			GameObjectManager::getInstance()->deleteObject(selectedObject);
 			std::cout << "Permanent action taken: Deleted object." << std::endl;
 		}
+
+		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::EndDisabled();
 	}
 
-	if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::EndDisabled();
 	ImGui::End();
 }
 
@@ -80,6 +129,22 @@ void InspectorWindow::updatePanelInfo(AGameObject* selected_object) {
 	mObjectScale[0] = scale.x;
 	mObjectScale[1] = scale.y;
 	mObjectScale[2] = scale.z;
+
+	AComponent* component = selected_object->findComponentOfType(AComponent::PHYSICS);
+	if (component) mHasPhysicsComponent = true;
+	else mHasPhysicsComponent = false;
+
+	if (!mHasPhysicsComponent) {
+		mCurrentPhysicsComponent = nullptr;
+		return;
+	}
+
+	PhysicsComponent* physics = (PhysicsComponent*)component;
+	mCurrentPhysicsComponent = physics;
+	mActiveBody = physics->isActive();
+	mStaticBody = physics->isStatic();
+	mGravityBody = physics->isGravityEnabled();
+	mBodyMass = physics->getMass();
 }
 
 void InspectorWindow::updateObjectInfo(AGameObject* selected_object) {
