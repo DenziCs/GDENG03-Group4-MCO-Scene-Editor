@@ -26,10 +26,8 @@ void MainMenuBar::draw() {
 			if (ImGui::MenuItem("Point Light")) {}
 			ImGui::EndMenu();
 		}
-		if (ImGui::MenuItem("Create Several Physics Cubes")) {
-			for (int i = 0; i < 1; i++) {
-				GameObjectManager::getInstance()->createObject(GameObjectManager::PHYSICS_CUBE);
-			}
+		if (ImGui::MenuItem("Create Dynamic Physics Cube")) {
+			GameObjectManager::getInstance()->createObject(GameObjectManager::PHYSICS_CUBE);
 		}
 		if (ImGui::MenuItem("Create Static Physics Plane")) {
 			GameObjectManager::getInstance()->createObject(GameObjectManager::PHYSICS_PLANE);

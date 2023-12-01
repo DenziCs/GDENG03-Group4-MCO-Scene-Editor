@@ -1,7 +1,7 @@
 /*
-Nathaniel Francis S. Filoteo
+Group 4
 GDENG03 X22
-HO -- Physics ECS
+MCO: Scene Editor
 */
 
 #include"AppWindow.h"

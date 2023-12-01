@@ -218,12 +218,24 @@ void AGameObject::setPosition(float x, float y, float z) {
 	mLocalPosition.z = z;
 
 	updateLocalMatrix();
+
+	AComponent* component = findComponentOfType(AComponent::PHYSICS);
+	if (component) {
+		PhysicsComponent* physics = (PhysicsComponent*)component;
+		physics->setPosition(Vector3D(x, y, z));
+	}
 }
 
 void AGameObject::setPosition(Vector3D position) {
 	mLocalPosition = position;
 
 	updateLocalMatrix();
+
+	AComponent* component = findComponentOfType(AComponent::PHYSICS);
+	if (component) {
+		PhysicsComponent* physics = (PhysicsComponent*)component;
+		physics->setPosition(position);
+	}
 }
 
 Vector3D AGameObject::getLocalPosition() {
@@ -236,12 +248,24 @@ void AGameObject::setScale(float x, float y, float z) {
 	mLocalScale.z = z;
 
 	updateLocalMatrix();
+
+	AComponent* component = findComponentOfType(AComponent::PHYSICS);
+	if (component) {
+		PhysicsComponent* physics = (PhysicsComponent*)component;
+		physics->setScale(Vector3D(x, y, z));
+	}
 }
 
 void AGameObject::setScale(Vector3D scale) {
 	mLocalScale = scale;
 
 	updateLocalMatrix();
+
+	AComponent* component = findComponentOfType(AComponent::PHYSICS);
+	if (component) {
+		PhysicsComponent* physics = (PhysicsComponent*)component;
+		physics->setScale(scale);
+	}
 }
 
 Vector3D AGameObject::getLocalScale() {
@@ -254,12 +278,24 @@ void AGameObject::setRotation(float x, float y, float z) {
 	mLocalRotation.z = z;
 
 	updateLocalMatrix();
+
+	AComponent* component = findComponentOfType(AComponent::PHYSICS);
+	if (component) {
+		PhysicsComponent* physics = (PhysicsComponent*)component;
+		physics->setRotation(Vector3D(x, y, z));
+	}
 }
 
 void AGameObject::setRotation(Vector3D rotation) {
 	mLocalRotation = rotation;
 
 	updateLocalMatrix();
+
+	AComponent* component = findComponentOfType(AComponent::PHYSICS);
+	if (component) {
+		PhysicsComponent* physics = (PhysicsComponent*)component;
+		physics->setRotation(rotation);
+	}
 }
 
 Vector3D AGameObject::getLocalRotation() {

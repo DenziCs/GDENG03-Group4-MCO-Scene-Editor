@@ -110,7 +110,6 @@ void GameObjectManager::createObject(PrimitiveType primitive_type) {
 		while (cube);
 
 		ACube* newCube = new ACube(newName);
-		newCube->setPosition(0.f, 10.f, 0.f);
 		addObject(newCube);
 		std::cout << newCube->getObjectName() << " spawned." << std::endl;
 
@@ -132,8 +131,6 @@ void GameObjectManager::createObject(PrimitiveType primitive_type) {
 		while (plane);
 
 		APlane* newPlane = new APlane(newName);
-		newPlane->setPosition(0.f, 0.f, 0.f);
-		newPlane->setScale(10.f, 1.f, 10.f);
 		addObject(newPlane);
 		std::cout << newPlane->getObjectName() << " spawned." << std::endl;
 
