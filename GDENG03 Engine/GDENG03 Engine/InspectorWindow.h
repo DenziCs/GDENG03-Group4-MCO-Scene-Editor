@@ -11,6 +11,7 @@ public:
 	void draw() override;
 
 private:
+	void updatePanelInfo(AGameObject* selected_object);
 	void updateObjectInfo(AGameObject* selected_object);
 
 	bool mIsSelectedObjectActive = true;

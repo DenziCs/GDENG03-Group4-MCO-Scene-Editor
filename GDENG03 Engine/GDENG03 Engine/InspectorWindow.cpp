@@ -26,7 +26,7 @@ void InspectorWindow::draw() {
 
 	else {
 		AGameObject* selectedObject = GameObjectManager::getInstance()->getSelectedObject();
-		updateObjectInfo(selectedObject);
+		updatePanelInfo(selectedObject);
 
 		ImGui::Text("Selected Object:");
 		ImGui::SameLine();
@@ -34,30 +34,22 @@ void InspectorWindow::draw() {
 		ImGui::Separator();
 
 		if (ImGui::Checkbox("Enabled", &mIsSelectedObjectActive)) {
-			ActionHistoryManager::getInstance()->startAction(selectedObject);
-			selectedObject->setActive(mIsSelectedObjectActive);
-			ActionHistoryManager::getInstance()->endAction();
+			updateObjectInfo(selectedObject);
 			std::cout << "Action taken: Modified isActive." << std::endl;
 		}
 
 		if (ImGui::DragFloat3("Position", mObjectPosition, 0.25f)) {
-			ActionHistoryManager::getInstance()->startAction(selectedObject);
-			selectedObject->setPosition(mObjectPosition[0], mObjectPosition[1], mObjectPosition[2]);
-			ActionHistoryManager::getInstance()->endAction();
+			updateObjectInfo(selectedObject);
 			std::cout << "Action taken: Modified position." << std::endl;
 		}
 
 		if (ImGui::DragFloat3("Rotation", mObjectRotation, 1.f, -360.f, 360.f)) {
-			ActionHistoryManager::getInstance()->startAction(selectedObject);
-			selectedObject->setRotation(AngleConverter::toRadians(mObjectRotation[0]), AngleConverter::toRadians(mObjectRotation[1]), AngleConverter::toRadians(mObjectRotation[2]));
-			ActionHistoryManager::getInstance()->endAction();
+			updateObjectInfo(selectedObject);
 			std::cout << "Action taken: Modified rotation." << std::endl;
 		}
 
 		if (ImGui::DragFloat3("Scale", mObjectScale, 0.25f, 0.f, 100.f)) {
-			ActionHistoryManager::getInstance()->startAction(selectedObject);
-			selectedObject->setScale(mObjectScale[0], mObjectScale[1], mObjectScale[2]);
-			ActionHistoryManager::getInstance()->endAction();
+			updateObjectInfo(selectedObject);
 			std::cout << "Action taken: Modified scale." << std::endl;
 		}
 
@@ -71,7 +63,7 @@ void InspectorWindow::draw() {
 	ImGui::End();
 }
 
-void InspectorWindow::updateObjectInfo(AGameObject* selected_object) {
+void InspectorWindow::updatePanelInfo(AGameObject* selected_object) {
 	mIsSelectedObjectActive = selected_object->isActive();
 
 	Vector3D position = selected_object->getLocalPosition();
@@ -88,4 +80,15 @@ void InspectorWindow::updateObjectInfo(AGameObject* selected_object) {
 	mObjectScale[0] = scale.x;
 	mObjectScale[1] = scale.y;
 	mObjectScale[2] = scale.z;
+}
+
+void InspectorWindow::updateObjectInfo(AGameObject* selected_object) {
+	ActionHistoryManager::getInstance()->startAction(selected_object);
+
+	selected_object->setActive(mIsSelectedObjectActive);
+	selected_object->setScale(mObjectScale[0], mObjectScale[1], mObjectScale[2]);
+	selected_object->setRotation(AngleConverter::toRadians(mObjectRotation[0]), AngleConverter::toRadians(mObjectRotation[1]), AngleConverter::toRadians(mObjectRotation[2]));
+	selected_object->setPosition(mObjectPosition[0], mObjectPosition[1], mObjectPosition[2]);
+
+	ActionHistoryManager::getInstance()->endAction();
 }
