@@ -27,4 +27,7 @@ private:
 	bool mGravityBody = true;
 	float mBodyMass = 1000.f;
 	float mAppliedForce[3] = {};
+
+	// Add other members needed for textures tab here.
+	bool mIsPopupEnabled = false;
 };
