@@ -101,6 +101,21 @@ void InspectorWindow::draw() {
 
 		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
 
+		if (selectedObject->getObjectType() == AGameObject::TEXTURED_CUBE) {
+			// Add drawMaterialsTab() section here.
+
+			/*
+			ImGui::Image();
+			ImGui::TextWrapped("Material: " + ().c_str());
+
+			if (ImGui::Button("Add Material")) {
+				mIsPopupEnabled = !mIsPopupEnabled;
+				MaterialPanel* materialPanel = (MaterialPanel*)(UIManager::getInstance()->getPanel(UIManager::MATERIAL_PANEL));
+				UIManager::getInstance()->setActive(materialPanel, mIsPopupEnabled);
+			}
+			*/
+		}
+
 		if (ImGui::Button("Delete Object")) {
 			GameObjectManager::getInstance()->deleteObject(selectedObject);
 			std::cout << "Permanent action taken: Deleted object." << std::endl;

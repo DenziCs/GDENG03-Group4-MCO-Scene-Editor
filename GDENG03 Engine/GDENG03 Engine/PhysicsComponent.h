@@ -36,5 +36,5 @@ public:
 private:
 	RigidBody* mRigidBody;
 
-	float mMass = 1000.f;
+	float mMass = 1.f;
 };

@@ -41,6 +41,8 @@ void PhysicsComponent::attachOwner(AGameObject* owner) {
 	mRigidBody->updateMassPropertiesFromColliders();
 	mRigidBody->setMass(mMass);
 	mRigidBody->setType(reactphysics3d::BodyType::DYNAMIC);
+	mRigidBody->setLinearDamping(0.01);
+	mRigidBody->setAngularDamping(0.01);
 
 	transform = mRigidBody->getTransform();
 
