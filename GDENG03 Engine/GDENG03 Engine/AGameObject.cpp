@@ -8,8 +8,10 @@
 #include"APixelShader.h"
 #include<Windows.h>
 
-AGameObject::AGameObject(std::string name) {
+AGameObject::AGameObject(std::string name, ObjectType type) {
 	mObjectName = name;
+	mObjectType = type;
+
 	mLocalPosition = Vector3D(0.f, 0.f, 0.f);
 	mLocalRotation = Vector3D(0.f, 0.f, 0.f);
 	mLocalScale = Vector3D(1.f, 1.f, 1.f);
@@ -182,6 +184,10 @@ void AGameObject::update(float delta_time) {
 
 std::string AGameObject::getObjectName() {
 	return mObjectName;
+}
+
+AGameObject::ObjectType AGameObject::getObjectType() {
+	return mObjectType;
 }
 
 bool AGameObject::isActive() {
