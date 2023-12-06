@@ -13,6 +13,8 @@ public:
 	void openExplorer();
 	void closeExplorer();
 
+	bool isEnabled();
+
 private:
 	ImGui::FileBrowser* browser;
 };

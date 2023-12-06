@@ -32,3 +32,8 @@ void SceneLoadPanel::closeExplorer()
 {
 	browser->Close();
 }
+
+bool SceneLoadPanel::isEnabled()
+{
+	return browser->IsOpened();
+}

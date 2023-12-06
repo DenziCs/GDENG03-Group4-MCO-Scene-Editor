@@ -32,3 +32,8 @@ void SceneSavePanel::closeExplorer()
 {
 	browser->Close();
 }
+
+bool SceneSavePanel::isEnabled()
+{
+	return browser->IsOpened();
+}
