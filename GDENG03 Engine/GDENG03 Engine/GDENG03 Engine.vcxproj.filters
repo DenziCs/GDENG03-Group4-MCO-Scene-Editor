@@ -234,6 +234,12 @@
     <ClCompile Include="SceneWriter.cpp">
       <Filter>Engine\Save and Load</Filter>
     </ClCompile>
+    <ClCompile Include="SceneSavePanel.cpp">
+      <Filter>Engine\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLoadPanel.cpp">
+      <Filter>Engine\User Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -715,6 +721,12 @@
     </ClInclude>
     <ClInclude Include="SceneWriter.h">
       <Filter>Engine\Save and Load</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSavePanel.h">
+      <Filter>Engine\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLoadPanel.h">
+      <Filter>Engine\User Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

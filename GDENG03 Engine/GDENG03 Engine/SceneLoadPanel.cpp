@@ -18,7 +18,7 @@ void SceneLoadPanel::draw()
 
 	if (browser->HasSelected())
 	{
-		SceneWriter::WriteToFile(browser->GetSelected().string());
+		SceneWriter::LoadFromFile(browser->GetSelected().string());
 		browser->Close();
 	}
 }

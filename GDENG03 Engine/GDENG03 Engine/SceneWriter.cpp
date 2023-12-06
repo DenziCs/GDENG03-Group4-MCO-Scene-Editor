@@ -106,6 +106,7 @@ void SceneWriter::LoadFromFile(std::string inputFilePath)
 	std::vector<AGameObject*> allObjects = GameObjectManager::getInstance()->getAllGameObjects();
 	for (int i = 0; i < allObjects.size(); i++)
 	{
+		std::cout << "Deleting: " << allObjects[i]->getObjectName();
 		GameObjectManager::getInstance()->deleteObject(allObjects[i]);
 	}
 
