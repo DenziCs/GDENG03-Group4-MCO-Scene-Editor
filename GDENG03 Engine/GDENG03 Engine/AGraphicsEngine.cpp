@@ -6,6 +6,7 @@
 #include"AVertexShader.h"
 #include"APixelShader.h"
 #include"ADeviceContext.h"
+#include "TexturedVertexBuffer.h"
 
 AGraphicsEngine::AGraphicsEngine() {
 }
@@ -73,6 +74,11 @@ AVertexBuffer* AGraphicsEngine::createVertexBuffer() {
 	return new AVertexBuffer();
 }
 
+TexturedVertexBuffer* AGraphicsEngine::createTexturedVertexBuffer()
+{
+	return new TexturedVertexBuffer();
+}
+
 AIndexBuffer* AGraphicsEngine::createIndexBuffer() {
 	return new AIndexBuffer();
 }
@@ -90,6 +96,8 @@ AVertexShader* AGraphicsEngine::createVertexShader(const void* shader_byte_code,
 
 	return vertexShader;
 }
+
+
 
 APixelShader* AGraphicsEngine::createPixelShader(const void* shader_byte_code, size_t byte_code_size) {
 	APixelShader* pixelShader = new APixelShader();

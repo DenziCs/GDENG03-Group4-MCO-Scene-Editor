@@ -172,6 +172,8 @@
     <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Randomizer.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneCameraManager.cpp" />
     <ClCompile Include="SceneLoadPanel.cpp" />
     <ClCompile Include="SceneOutliner.cpp" />
@@ -182,8 +184,13 @@
     <ClCompile Include="StateSnapshot.cpp" />
     <ClCompile Include="StringUtilities.cpp" />
     <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturedCube.cpp" />
+    <ClCompile Include="TexturedVertexBuffer.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="UIManager.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="Vertex.cpp" />
@@ -336,6 +343,8 @@
     <ClInclude Include="reactphysics3d\include\reactphysics3d\utils\DefaultLogger.h" />
     <ClInclude Include="reactphysics3d\include\reactphysics3d\utils\Logger.h" />
     <ClInclude Include="reactphysics3d\include\reactphysics3d\utils\Profiler.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneCameraManager.h" />
     <ClInclude Include="SceneLoadPanel.h" />
     <ClInclude Include="SceneOutliner.h" />
@@ -346,8 +355,13 @@
     <ClInclude Include="StateSnapshot.h" />
     <ClInclude Include="StringUtilities.h" />
     <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturedCube.h" />
+    <ClInclude Include="TexturedVertexBuffer.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="UIManager.h" />
+    <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Vector3D.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="Vertex.h" />
