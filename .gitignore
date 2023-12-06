@@ -48,3 +48,7 @@
 *.idb
 *.sqlite
 *.json
+*.vcxproj
+*.user
+*.filters
+*.bin
