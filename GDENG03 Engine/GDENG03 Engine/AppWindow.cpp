@@ -7,6 +7,10 @@
 #include"GlobalProperties.h"
 #include<iostream>
 #include"PhysicsComponent.h"
+//#include "ShaderLibrary.h"
+
+
+#include "TextureManager.h"
 
 AppWindow::AppWindow() {}
 
@@ -16,6 +20,8 @@ void AppWindow::onCreate() {
 	AWindow::onCreate();
 	GameObjectManager::initialize();
 	AGraphicsEngine::getInstance()->initialize();
+	TextureManager::initialize();
+
 	mSwapChain = AGraphicsEngine::getInstance()->createSwapChain();
 
 	RECT windowRect = this->getWindowRect();
@@ -34,6 +40,8 @@ void AppWindow::onCreate() {
 	SceneCameraManager::getInstance()->setSceneCamera(sceneCamera);
 
 	UIManager::initialize(this->mWindowHandle);
+
+	
 }
 
 void AppWindow::onUpdate() {

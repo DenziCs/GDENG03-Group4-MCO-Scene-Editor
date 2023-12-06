@@ -14,7 +14,7 @@ public:
 	void update(float delta_time) override;
 	void draw(int width, int height) override;
 
-private:
+protected:
 	AVertexBuffer* mVertexBuffer;
 	AIndexBuffer* mIndexBuffer;
 	AConstantBuffer* mConstantBuffer;
