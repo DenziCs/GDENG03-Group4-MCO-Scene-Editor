@@ -70,6 +70,9 @@
     <Filter Include="Engine\Editor">
       <UniqueIdentifier>{fbc7b40e-400d-4dd7-a8e7-6997e546835b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Save and Load">
+      <UniqueIdentifier>{1da7ed9f-c265-484b-99a1-90fbe50efd32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -227,6 +230,15 @@
     </ClCompile>
     <ClCompile Include="StringUtilities.cpp">
       <Filter>Engine\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneWriter.cpp">
+      <Filter>Engine\Save and Load</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSavePanel.cpp">
+      <Filter>Engine\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLoadPanel.cpp">
+      <Filter>Engine\User Interface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -706,6 +718,15 @@
     </ClInclude>
     <ClInclude Include="StringUtilities.h">
       <Filter>Engine\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneWriter.h">
+      <Filter>Engine\Save and Load</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSavePanel.h">
+      <Filter>Engine\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLoadPanel.h">
+      <Filter>Engine\User Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

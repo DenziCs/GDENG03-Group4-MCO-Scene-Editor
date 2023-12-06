@@ -8,8 +8,20 @@ void MainMenuBar::draw() {
 
 	if (ImGui::BeginMenu("File")) {
 		if (ImGui::MenuItem("New")) {}
-		if (ImGui::MenuItem("Save")) {}
-		if (ImGui::MenuItem("Open")) {}
+		if (ImGui::MenuItem("Save"))
+		{
+			if (!mSavePanel->isEnabled())
+			{
+				mSavePanel->openExplorer();
+			}
+		}
+		if (ImGui::MenuItem("Open"))
+		{
+			if (!mLoadPanel->isEnabled())
+			{
+				mLoadPanel->openExplorer();
+			}
+		}
 		if (ImGui::MenuItem("Exit")) {}
 		ImGui::EndMenu();
 	}
@@ -52,4 +64,14 @@ void MainMenuBar::draw() {
 	}
 
 	ImGui::EndMainMenuBar();
+}
+
+void MainMenuBar::setSceneSavePanel(SceneSavePanel* savePanel)
+{
+	mSavePanel = savePanel;
+}
+
+void MainMenuBar::setSceneLoadPanel(SceneLoadPanel* loadPanel)
+{
+	mLoadPanel = loadPanel;
 }
