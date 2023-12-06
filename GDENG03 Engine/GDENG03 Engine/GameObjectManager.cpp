@@ -2,6 +2,7 @@
 #include"TimeManager.h"
 #include"ACube.h"
 #include"APlane.h"
+#include "TexturedCube.h"
 #include"GlobalProperties.h"
 #include<iostream>
 #include"PhysicsComponent.h"
@@ -150,7 +151,7 @@ void GameObjectManager::createObject(PrimitiveType spawn_type) {
 			cube = mGameObjectTable[newName];
 		} while (cube);
 
-		ACube* newCube = new ACube(newName); // Replace with TexturedCube constructor once it exists.
+		TexturedCube* newCube = new TexturedCube(newName); 
 		addObject(newCube);
 		std::cout << newCube->getObjectName() << " spawned." << std::endl;
 	}

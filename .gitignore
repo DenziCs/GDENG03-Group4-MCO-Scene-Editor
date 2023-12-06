@@ -48,3 +48,6 @@
 *.idb
 *.sqlite
 *.json
+
+GDENG03 Engine/GDENG03 Engine/Libs/
+

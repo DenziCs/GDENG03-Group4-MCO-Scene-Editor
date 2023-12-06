@@ -9,6 +9,7 @@ class AIndexBuffer;
 class AConstantBuffer;
 class AVertexShader;
 class APixelShader;
+class TexturedVertexBuffer;
 
 class AGraphicsEngine
 {
@@ -21,9 +22,11 @@ public:
 
 	ASwapChain* createSwapChain();
 	AVertexBuffer* createVertexBuffer();
+	TexturedVertexBuffer* createTexturedVertexBuffer();
 	AIndexBuffer* createIndexBuffer();
 	AConstantBuffer* createConstantBuffer();
 	AVertexShader* createVertexShader(const void* shader_byte_code, size_t byte_code_size);
+	
 	APixelShader* createPixelShader(const void* shader_byte_code, size_t byte_code_size);
 
 	bool compileVertexShader(const wchar_t* file_name, const char* entry_point_name, void** shader_byte_code, size_t* byte_code_size);
@@ -61,4 +64,5 @@ protected:
 	friend class AConstantBuffer;
 	friend class AVertexShader;
 	friend class APixelShader;
+	friend class TexturedVertexBuffer;
 };

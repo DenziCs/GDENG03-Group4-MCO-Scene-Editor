@@ -70,6 +70,12 @@
     <Filter Include="Engine\Editor">
       <UniqueIdentifier>{fbc7b40e-400d-4dd7-a8e7-6997e546835b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Resources">
+      <UniqueIdentifier>{a017b65a-d049-4c5e-ba5b-fe41fa0f80b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resources\Textures">
+      <UniqueIdentifier>{91d3140b-5937-4b1a-8c23-9c88ce7f4cd8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -228,6 +234,23 @@
     <ClCompile Include="StringUtilities.cpp">
       <Filter>Engine\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedVertexBuffer.cpp" />
+    <ClCompile Include="TexturedCube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -707,6 +730,23 @@
     <ClInclude Include="StringUtilities.h">
       <Filter>Engine\Misc</Filter>
     </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedVertexBuffer.h" />
+    <ClInclude Include="TexturedCube.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

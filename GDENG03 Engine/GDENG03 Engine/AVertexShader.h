@@ -11,7 +11,7 @@ public:
 	~AVertexShader();
 
 	void release();
-
+	ID3D11VertexShader* getShader();
 private:
 	bool initialize(const void* shader_byte_code, size_t byte_code_size);
 
