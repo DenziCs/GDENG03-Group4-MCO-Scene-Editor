@@ -148,7 +148,8 @@ void SceneWriter::LoadFromFile(std::string inputFilePath)
 			break;
 		}
 
-		case 2: {
+		case 2:
+		{
 			std::vector<std::string> split = StringUtilities::split(currentLine, ' ');
 			pos = Vector3D(std::stof(split[1]), std::stof(split[2]), std::stof(split[3]));
 			std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
