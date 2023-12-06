@@ -79,6 +79,15 @@ UIManager::UIManager(HWND window_handle) {
     mListUI.push_back(scenePlay);
 
     // Add material panel constructor here.
+
+    //Scene save and load options
+    SceneSavePanel* savePanel = new SceneSavePanel("Save Panel");
+    mListUI.push_back(savePanel);
+    mainMenuBar->setSceneSavePanel(savePanel);
+
+    SceneLoadPanel* loadPanel = new SceneLoadPanel("Load Panel");
+    mListUI.push_back(loadPanel);
+    mainMenuBar->setSceneLoadPanel(loadPanel);
 }
 
 UIManager::~UIManager() {

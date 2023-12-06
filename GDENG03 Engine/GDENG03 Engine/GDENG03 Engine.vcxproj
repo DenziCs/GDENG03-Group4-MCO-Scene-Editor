@@ -84,6 +84,7 @@
       <PreprocessorDefinitions>WIN32;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\GDENG03 Engine\imgui;$(SolutionDir)\GDENG03 Engine\reactphysics3d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -181,8 +182,11 @@
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneCameraManager.cpp" />
+    <ClCompile Include="SceneLoadPanel.cpp" />
     <ClCompile Include="SceneOutliner.cpp" />
     <ClCompile Include="ScenePlayOptionsWindow.cpp" />
+    <ClCompile Include="SceneSavePanel.cpp" />
+    <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="SimpleWindowPanel.cpp" />
     <ClCompile Include="StateSnapshot.cpp" />
     <ClCompile Include="StringUtilities.cpp" />
@@ -349,8 +353,11 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneCameraManager.h" />
+    <ClInclude Include="SceneLoadPanel.h" />
     <ClInclude Include="SceneOutliner.h" />
     <ClInclude Include="ScenePlayOptionsWindow.h" />
+    <ClInclude Include="SceneSavePanel.h" />
+    <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="SimpleWindowPanel.h" />
     <ClInclude Include="StateSnapshot.h" />
     <ClInclude Include="StringUtilities.h" />
