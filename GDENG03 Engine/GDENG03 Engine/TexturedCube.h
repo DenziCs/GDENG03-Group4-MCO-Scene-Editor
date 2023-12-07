@@ -7,6 +7,7 @@
 #include "TexturedVertexBuffer.h"
 
 #include "Texture.h"
+#include "ObjectRenderer.h"
 
 class TexturedCube : public AGameObject
 {
@@ -17,6 +18,9 @@ public:
 	void update(float delta_time) override;
 	void draw(int width, int height) override;
 
+	void attachRenderer(ObjectRenderer* renderer);
+	ObjectRenderer* getRenderer() const;
+
 protected:
 	//AVertexBuffer* mVertexBuffer;
 	AIndexBuffer* mIndexBuffer;
@@ -24,7 +28,7 @@ protected:
 	TexturedVertexBuffer* texVertexBuffer;
 	AVertexBuffer* mVertexBuffer;
 
-	Texture* texture;
+	ObjectRenderer* renderer;
 
 	float mDeltaTime = 0.f;
 	float mElapsedTime = 0.f;

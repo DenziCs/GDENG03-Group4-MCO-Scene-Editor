@@ -16,7 +16,10 @@ struct TextureVertex
 
 
 TexturedCube::TexturedCube(std::string name) : AGameObject::AGameObject(name, TEXTURED_CUBE) {
-	texture = TextureManager::getInstance()->createTextureFromFile(L"wood.jpg");
+	
+
+	renderer = new ObjectRenderer();
+	
 
 	ShaderNames shaderNames;
 	void* shaderByteCode = nullptr;
@@ -167,7 +170,7 @@ void TexturedCube::draw(int width, int height) {
 
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexShader(this->mVertexShader);
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setPixelShader(this->mPixelShader);
-	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setTexture(texture);
+	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setTexture(renderer->getTexture());
 
 	/*
 	ShaderNames shaderNames;
@@ -181,4 +184,9 @@ void TexturedCube::draw(int width, int height) {
 
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->drawIndexedTriangleList(mIndexBuffer->getIndexCount(), 0, 0);
 
+}
+
+ObjectRenderer* TexturedCube::getRenderer() const
+{
+	return this->renderer;
 }

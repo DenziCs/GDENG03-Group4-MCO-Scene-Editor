@@ -76,6 +76,12 @@
     <Filter Include="Engine\Resources\Textures">
       <UniqueIdentifier>{91d3140b-5937-4b1a-8c23-9c88ce7f4cd8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Graphics\ShaderLib">
+      <UniqueIdentifier>{e3a214bf-8bd4-49ec-a0c1-3280d29c649c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\ObjectRenderer">
+      <UniqueIdentifier>{3c483ac1-66ac-4935-bd52-62aa041e3af7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -258,7 +264,15 @@
     <ClCompile Include="TexturedVertexBuffer.cpp">
       <Filter>Engine\Graphics\VertexBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderLibrary.cpp" />
+    <ClCompile Include="MaterialPanel.cpp">
+      <Filter>Engine\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLibrary.cpp">
+      <Filter>Engine\Graphics\ShaderLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRenderer.cpp">
+      <Filter>Engine\Graphics\ObjectRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -765,7 +779,15 @@
     <ClInclude Include="TexturedVertexBuffer.h">
       <Filter>Engine\Graphics\VertexBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLibrary.h" />
+    <ClInclude Include="MaterialPanel.h">
+      <Filter>Engine\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLibrary.h">
+      <Filter>Engine\Graphics\ShaderLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRenderer.h">
+      <Filter>Engine\Graphics\ObjectRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

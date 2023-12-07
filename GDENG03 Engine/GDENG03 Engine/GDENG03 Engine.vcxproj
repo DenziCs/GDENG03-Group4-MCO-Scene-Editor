@@ -174,7 +174,9 @@
     <ClCompile Include="InspectorWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuBar.cpp" />
+    <ClCompile Include="MaterialPanel.cpp" />
     <ClCompile Include="Matrix4x4.cpp" />
+    <ClCompile Include="ObjectRenderer.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -241,7 +243,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="InspectorWindow.h" />
     <ClInclude Include="MainMenuBar.h" />
+    <ClInclude Include="MaterialPanel.h" />
     <ClInclude Include="Matrix4x4.h" />
+    <ClInclude Include="ObjectRenderer.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="Point.h" />

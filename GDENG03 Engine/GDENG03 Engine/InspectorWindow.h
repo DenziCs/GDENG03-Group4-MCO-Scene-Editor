@@ -1,7 +1,9 @@
 #pragma once
 #include"AUIPanel.h"
 #include"AGameObject.h"
+#include "MaterialPanel.h"
 #include"PhysicsComponent.h"
+#include "Texture.h"
 
 class InspectorWindow : public AUIPanel
 {
@@ -11,9 +13,16 @@ public:
 
 	void draw() override;
 
+	void setMaterialWindow(MaterialPanel* window);
+	void setMaterialWindowData(std::string materialPath);
+
 private:
+	AGameObject* selectedObject = nullptr;
+
 	void updatePanelInfo(AGameObject* selected_object);
 	void updateObjectInfo(AGameObject* selected_object);
+
+	std::vector<std::string> splitPath(const std::string& s, char delim);
 
 	bool mIsSelectedObjectActive = true;
 	float mObjectPosition[3] = {};
@@ -30,4 +39,10 @@ private:
 
 	// Add other members needed for textures tab here.
 	bool mIsPopupEnabled = false;
+
+	//textures
+	MaterialPanel* materialScreen;
+	std::string materialPath;
+	std::string materialName;
+	Texture* materialDisplay;
 };

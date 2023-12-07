@@ -6,6 +6,7 @@ class UIManager;
 
 class AUIPanel
 {
+
 protected:
 	AUIPanel(std::string name);
 	~AUIPanel() {};

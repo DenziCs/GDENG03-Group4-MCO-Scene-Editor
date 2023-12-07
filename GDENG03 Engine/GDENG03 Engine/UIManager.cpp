@@ -6,6 +6,7 @@
 #include"SceneOutliner.h"
 #include"EngineProfiler.h"
 #include"ScenePlayOptionsWindow.h"
+#include "MaterialPanel.h"
 
 UIManager* UIManager::instance = nullptr;
 
@@ -79,6 +80,13 @@ UIManager::UIManager(HWND window_handle) {
     mListUI.push_back(scenePlay);
 
     // Add material panel constructor here.
+    MaterialPanel* materialScreen = new MaterialPanel("Material Screen");
+    materialScreen->mIsEnabled = false;
+    materialScreen->setInspectorWindow(inspectorWindow);
+    mListUI.push_back(materialScreen);
+
+    //Set material screen in inspector window
+    inspectorWindow->setMaterialWindow(materialScreen);
 
     //Scene save and load options
     SceneSavePanel* savePanel = new SceneSavePanel("Save Panel");
