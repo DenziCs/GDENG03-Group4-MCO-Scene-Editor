@@ -62,6 +62,12 @@ void ADeviceContext::setTexture(Texture* texture)
 	mDeviceContext->VSSetShaderResources(0, 1, &texture->m_shader_res_view);
 }
 
+void ADeviceContext::setRenderConfig(AVertexShader* vertexShader, APixelShader* pixelShader)
+{
+	this->mDeviceContext->VSSetShader(vertexShader->getShader(), NULL, 0);
+	this->mDeviceContext->PSSetShader(pixelShader->getShader(), NULL, 0);
+}
+
 
 ID3D11DeviceContext* ADeviceContext::getD3DDeviceContext() {
 	return mDeviceContext;

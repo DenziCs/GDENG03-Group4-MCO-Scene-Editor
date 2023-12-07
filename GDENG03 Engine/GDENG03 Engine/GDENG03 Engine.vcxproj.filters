@@ -249,11 +249,16 @@
     <ClCompile Include="Vector2D.cpp">
       <Filter>Engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="TexturedVertexBuffer.cpp" />
-    <ClCompile Include="TexturedCube.cpp" />
     <ClCompile Include="SceneLoadPanel.cpp" />
     <ClCompile Include="SceneSavePanel.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="TexturedCube.cpp">
+      <Filter>Engine\Graphics\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedVertexBuffer.cpp">
+      <Filter>Engine\Graphics\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -748,14 +753,19 @@
     <ClInclude Include="Vector2D.h">
       <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="TexturedVertexBuffer.h" />
-    <ClInclude Include="TexturedCube.h" />
     <ClInclude Include="SceneLoadPanel.h" />
     <ClInclude Include="SceneSavePanel.h" />
     <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="imgui\imfilebrowser.h">
       <Filter>IMGUI</Filter>
     </ClInclude>
+    <ClInclude Include="TexturedCube.h">
+      <Filter>Engine\Graphics\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedVertexBuffer.h">
+      <Filter>Engine\Graphics\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLibrary.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

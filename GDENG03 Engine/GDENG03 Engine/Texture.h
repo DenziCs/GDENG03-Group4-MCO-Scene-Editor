@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 #include "Resource.h"
 #include <d3d11.h>
 
@@ -11,13 +11,13 @@ public:
 	ID3D11ShaderResourceView* getShaderResource();
 
 private:
-	ID3D11Resource* myTexture = NULL;
-	ID3D11ShaderResourceView* shaderResView = NULL;
+	ID3D11Resource* m_texture = nullptr;
+	ID3D11ShaderResourceView* m_shader_res_view = nullptr;
 
 	friend class ADeviceContext;
 };
-*/
 
+/*
 #pragma once
 #include <d3d11.h>
 
@@ -33,4 +33,4 @@ private:
 private:
 	friend class ADeviceContext;
 };
-
+*/

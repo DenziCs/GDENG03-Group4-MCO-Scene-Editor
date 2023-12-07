@@ -1,4 +1,4 @@
-/*#include "Texture.h"
+#include "Texture.h"
 #include <iostream>
 #include <DirectXTex.h>
 #include "AGraphicsEngine.h"
@@ -11,7 +11,7 @@ Texture::Texture(const wchar_t* fullPath) : AResource(fullPath)
 	if (SUCCEEDED(res)) {
 		ID3D11Device* dxDevice = AGraphicsEngine::getInstance()->getD3DDevice();
 		res = DirectX::CreateTexture(dxDevice, imageData.GetImages(),
-			imageData.GetImageCount(), imageData.GetMetadata(), &this->myTexture);
+			imageData.GetImageCount(), imageData.GetMetadata(), &this->m_texture);
 
 		D3D11_SHADER_RESOURCE_VIEW_DESC desc = {};
 		desc.Format = imageData.GetMetadata().format;
@@ -19,7 +19,7 @@ Texture::Texture(const wchar_t* fullPath) : AResource(fullPath)
 		desc.Texture2D.MipLevels = (UINT)imageData.GetMetadata().mipLevels;
 		desc.Texture2D.MostDetailedMip = 0;
 
-		dxDevice->CreateShaderResourceView(this->myTexture, &desc, &this->shaderResView);
+		dxDevice->CreateShaderResourceView(this->m_texture, &desc, &this->m_shader_res_view);
 
 		std::cout << "Texture created successfully. \n";
 	}
@@ -31,8 +31,8 @@ Texture::Texture(const wchar_t* fullPath) : AResource(fullPath)
 Texture::~Texture()
 {
 	AResource::~AResource();
-	this->shaderResView->Release();
-	this->myTexture->Release();
+	this->m_shader_res_view->Release();
+	this->m_texture->Release();
 }
 
 AResource::String Texture::getPath()
@@ -42,10 +42,10 @@ AResource::String Texture::getPath()
 
 ID3D11ShaderResourceView* Texture::getShaderResource()
 {
-	return this->shaderResView;
+	return this->m_shader_res_view;
 }
-*/
 
+/*
 #include "Texture.h"
 
 #include <DirectXTex.h>
@@ -105,3 +105,4 @@ Texture::~Texture()
 	m_shader_res_view->Release();
 	m_texture->Release();
 }
+*/

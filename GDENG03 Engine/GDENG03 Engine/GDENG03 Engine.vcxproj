@@ -187,6 +187,7 @@
     <ClCompile Include="ScenePlayOptionsWindow.cpp" />
     <ClCompile Include="SceneSavePanel.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="ShaderLibrary.cpp" />
     <ClCompile Include="SimpleWindowPanel.cpp" />
     <ClCompile Include="StateSnapshot.cpp" />
     <ClCompile Include="StringUtilities.cpp" />
@@ -359,6 +360,7 @@
     <ClInclude Include="ScenePlayOptionsWindow.h" />
     <ClInclude Include="SceneSavePanel.h" />
     <ClInclude Include="SceneWriter.h" />
+    <ClInclude Include="ShaderLibrary.h" />
     <ClInclude Include="SimpleWindowPanel.h" />
     <ClInclude Include="StateSnapshot.h" />
     <ClInclude Include="StringUtilities.h" />
