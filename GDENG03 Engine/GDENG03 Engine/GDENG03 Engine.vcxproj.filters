@@ -251,6 +251,9 @@
     </ClCompile>
     <ClCompile Include="TexturedVertexBuffer.cpp" />
     <ClCompile Include="TexturedCube.cpp" />
+    <ClCompile Include="SceneLoadPanel.cpp" />
+    <ClCompile Include="SceneSavePanel.cpp" />
+    <ClCompile Include="SceneWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -747,6 +750,12 @@
     </ClInclude>
     <ClInclude Include="TexturedVertexBuffer.h" />
     <ClInclude Include="TexturedCube.h" />
+    <ClInclude Include="SceneLoadPanel.h" />
+    <ClInclude Include="SceneSavePanel.h" />
+    <ClInclude Include="SceneWriter.h" />
+    <ClInclude Include="imgui\imfilebrowser.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
