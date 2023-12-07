@@ -4,6 +4,7 @@
 #include"ADeviceContext.h"
 #include<iostream>
 #include"GlobalProperties.h"
+#include "ShaderLibrary.h"
 #include "Vector2D.h"
 #include "TextureManager.h"
 
@@ -15,11 +16,17 @@ struct TextureVertex
 
 
 TexturedCube::TexturedCube(std::string name) : AGameObject::AGameObject(name, TEXTURED_CUBE) {
-	texture = TextureManager::getInstance()->createTextureFromFile(L"wood.jpg");
+	
 
+	renderer = new ObjectRenderer();
+	
+
+	ShaderNames shaderNames;
 	void* shaderByteCode = nullptr;
 	size_t shaderSize;
+
 	AGraphicsEngine::getInstance()->compileVertexShader(L"TextureVertexShader.hlsl", "vsmain", &shaderByteCode, &shaderSize);
+	//ShaderLibrary::getInstance()->requestVertexShaderData(shaderNames.TEXTURED_VERTEX_SHADER_NAME, &shaderByteCode, &shaderSize);
 
 	Vector3D position_list[] =
 	{
@@ -115,13 +122,18 @@ TexturedCube::TexturedCube(std::string name) : AGameObject::AGameObject(name, TE
 	mConstantBuffer = AGraphicsEngine::getInstance()->createConstantBuffer();
 	mConstantBuffer->load(&datablock, sizeof(constant));
 
+
+	//ADeviceContext* deviceContext = AGraphicsEngine::getInstance()->getImmediateDeviceContext();
+	//deviceContext->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.TEXTURED_VERTEX_SHADER_NAME),ShaderLibrary::getInstance()->getPixelShader(shaderNames.TEXTURED_PIXEL_SHADER_NAME));
+
+	///*
 	this->mVertexShader = AGraphicsEngine::getInstance()->createVertexShader(shaderByteCode, shaderSize);
 	AGraphicsEngine::getInstance()->releaseCompiledVertexShader();
 
 	AGraphicsEngine::getInstance()->compilePixelShader(L"TexturePixelShader.hlsl", "psmain", &shaderByteCode, &shaderSize);
 	this->mPixelShader = AGraphicsEngine::getInstance()->createPixelShader(shaderByteCode, shaderSize);
 	AGraphicsEngine::getInstance()->releaseCompiledPixelShader();
-
+	//*/
 }
 
 TexturedCube::~TexturedCube() {
@@ -135,6 +147,10 @@ void TexturedCube::update(float delta_time) {
 }
 
 void TexturedCube::draw(int width, int height) {
+
+	
+	
+
 	constant shaderNumbers;
 
 	if (this->findComponentOfType(AComponent::PHYSICS)) {
@@ -154,10 +170,23 @@ void TexturedCube::draw(int width, int height) {
 
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexShader(this->mVertexShader);
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setPixelShader(this->mPixelShader);
+	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setTexture(renderer->getTexture());
+
+	/*
+	ShaderNames shaderNames;
+	ADeviceContext* deviceContext = AGraphicsEngine::getInstance()->getImmediateDeviceContext();
+	deviceContext->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.TEXTURED_VERTEX_SHADER_NAME), ShaderLibrary::getInstance()->getPixelShader(shaderNames.TEXTURED_PIXEL_SHADER_NAME));
+	*/
+
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexBuffer(texVertexBuffer);
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setIndexBuffer(mIndexBuffer);
-	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setTexture(texture);
+
 
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->drawIndexedTriangleList(mIndexBuffer->getIndexCount(), 0, 0);
 
+}
+
+ObjectRenderer* TexturedCube::getRenderer() const
+{
+	return this->renderer;
 }

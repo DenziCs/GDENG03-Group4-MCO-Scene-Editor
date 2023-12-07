@@ -73,6 +73,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(SolutionDir)\GDENG03 Engine\reactphysics3d</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);Libs\reactphysics3d\include;E:\.School\GDENG03\GDENG03_SceneEditor\GDENG03-Group4-MCO-Scene-Editor\GDENG03 Engine\packages\directxtex_desktop_win10.2023.10.31.1\include</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)Libs\reactphysics3d\</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -108,12 +112,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;NOMINMAX;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\.School\GDENG03\GDENG03_Engine_Feature_Replication\GDENG03_MCO\GDENG03 Engine\GDENG03 Engine\imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)d3d11.lib;reactphysics3d.lib;d3dcompiler.lib;DirectXTex.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -167,7 +174,9 @@
     <ClCompile Include="InspectorWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuBar.cpp" />
+    <ClCompile Include="MaterialPanel.cpp" />
     <ClCompile Include="Matrix4x4.cpp" />
+    <ClCompile Include="ObjectRenderer.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -180,6 +189,7 @@
     <ClCompile Include="ScenePlayOptionsWindow.cpp" />
     <ClCompile Include="SceneSavePanel.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="ShaderLibrary.cpp" />
     <ClCompile Include="SimpleWindowPanel.cpp" />
     <ClCompile Include="StateSnapshot.cpp" />
     <ClCompile Include="StringUtilities.cpp" />
@@ -221,6 +231,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GlobalProperties.h" />
     <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imfilebrowser.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
     <ClInclude Include="imgui\imgui_impl_win32.h" />
@@ -232,7 +243,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="InspectorWindow.h" />
     <ClInclude Include="MainMenuBar.h" />
+    <ClInclude Include="MaterialPanel.h" />
     <ClInclude Include="Matrix4x4.h" />
+    <ClInclude Include="ObjectRenderer.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="Point.h" />
@@ -351,6 +364,7 @@
     <ClInclude Include="ScenePlayOptionsWindow.h" />
     <ClInclude Include="SceneSavePanel.h" />
     <ClInclude Include="SceneWriter.h" />
+    <ClInclude Include="ShaderLibrary.h" />
     <ClInclude Include="SimpleWindowPanel.h" />
     <ClInclude Include="StateSnapshot.h" />
     <ClInclude Include="StringUtilities.h" />
@@ -366,22 +380,6 @@
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="AVertexShader.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="PixelShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

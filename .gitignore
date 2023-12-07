@@ -48,7 +48,6 @@
 *.idb
 *.sqlite
 *.json
-*.vcxproj
-*.user
-*.filters
-*.bin
+
+GDENG03 Engine/GDENG03 Engine/Libs/
+

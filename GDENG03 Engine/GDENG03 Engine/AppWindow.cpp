@@ -7,7 +7,7 @@
 #include"GlobalProperties.h"
 #include<iostream>
 #include"PhysicsComponent.h"
-//#include "ShaderLibrary.h"
+#include "ShaderLibrary.h"
 
 
 #include "TextureManager.h"
@@ -21,6 +21,7 @@ void AppWindow::onCreate() {
 	GameObjectManager::initialize();
 	AGraphicsEngine::getInstance()->initialize();
 	TextureManager::initialize();
+	ShaderLibrary::initialize();
 
 	mSwapChain = AGraphicsEngine::getInstance()->createSwapChain();
 

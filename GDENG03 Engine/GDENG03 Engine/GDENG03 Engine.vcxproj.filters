@@ -70,8 +70,17 @@
     <Filter Include="Engine\Editor">
       <UniqueIdentifier>{fbc7b40e-400d-4dd7-a8e7-6997e546835b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Save and Load">
-      <UniqueIdentifier>{1da7ed9f-c265-484b-99a1-90fbe50efd32}</UniqueIdentifier>
+    <Filter Include="Engine\Resources">
+      <UniqueIdentifier>{a017b65a-d049-4c5e-ba5b-fe41fa0f80b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resources\Textures">
+      <UniqueIdentifier>{91d3140b-5937-4b1a-8c23-9c88ce7f4cd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\ShaderLib">
+      <UniqueIdentifier>{e3a214bf-8bd4-49ec-a0c1-3280d29c649c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\ObjectRenderer">
+      <UniqueIdentifier>{3c483ac1-66ac-4935-bd52-62aa041e3af7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -231,14 +240,38 @@
     <ClCompile Include="StringUtilities.cpp">
       <Filter>Engine\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="SceneWriter.cpp">
-      <Filter>Engine\Save and Load</Filter>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Engine\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="SceneSavePanel.cpp">
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLoadPanel.cpp" />
+    <ClCompile Include="SceneSavePanel.cpp" />
+    <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="TexturedCube.cpp">
+      <Filter>Engine\Graphics\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedVertexBuffer.cpp">
+      <Filter>Engine\Graphics\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialPanel.cpp">
       <Filter>Engine\User Interface</Filter>
     </ClCompile>
-    <ClCompile Include="SceneLoadPanel.cpp">
-      <Filter>Engine\User Interface</Filter>
+    <ClCompile Include="ShaderLibrary.cpp">
+      <Filter>Engine\Graphics\ShaderLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRenderer.cpp">
+      <Filter>Engine\Graphics\ObjectRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -719,23 +752,42 @@
     <ClInclude Include="StringUtilities.h">
       <Filter>Engine\Misc</Filter>
     </ClInclude>
-    <ClInclude Include="SceneWriter.h">
-      <Filter>Engine\Save and Load</Filter>
+    <ClInclude Include="Resource.h">
+      <Filter>Engine\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="SceneSavePanel.h">
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Engine\Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLoadPanel.h" />
+    <ClInclude Include="SceneSavePanel.h" />
+    <ClInclude Include="SceneWriter.h" />
+    <ClInclude Include="imgui\imfilebrowser.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedCube.h">
+      <Filter>Engine\Graphics\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedVertexBuffer.h">
+      <Filter>Engine\Graphics\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialPanel.h">
       <Filter>Engine\User Interface</Filter>
     </ClInclude>
-    <ClInclude Include="SceneLoadPanel.h">
-      <Filter>Engine\User Interface</Filter>
+    <ClInclude Include="ShaderLibrary.h">
+      <Filter>Engine\Graphics\ShaderLib</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="VertexShader.hlsl">
-      <Filter>App</Filter>
-    </FxCompile>
-    <FxCompile Include="PixelShader.hlsl">
-      <Filter>App</Filter>
-    </FxCompile>
+    <ClInclude Include="ObjectRenderer.h">
+      <Filter>Engine\Graphics\ObjectRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

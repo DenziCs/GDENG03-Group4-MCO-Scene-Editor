@@ -8,6 +8,10 @@
 #include"PhysicsSystem.h"
 #include<iostream>
 
+#include "TexturedCube.h"
+#include "TextureManager.h"
+#include "UIManager.h"
+
 InspectorWindow::InspectorWindow(std::string name) : AUIPanel::AUIPanel(name) {}
 
 InspectorWindow::~InspectorWindow() {}
@@ -25,7 +29,7 @@ void InspectorWindow::draw() {
 	}
 
 	else {
-		AGameObject* selectedObject = GameObjectManager::getInstance()->getSelectedObject();
+		selectedObject = GameObjectManager::getInstance()->getSelectedObject();
 		updatePanelInfo(selectedObject);
 
 		ImGui::Text("Selected Object:");
@@ -102,18 +106,24 @@ void InspectorWindow::draw() {
 		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
 
 		if (selectedObject->getObjectType() == AGameObject::TEXTURED_CUBE) {
-			// Add drawMaterialsTab() section here.
+			TexturedCube* texturedCube = static_cast<TexturedCube*>(selectedObject);
+			this->materialPath = texturedCube->getRenderer()->getMaterialPath();
+			this->materialDisplay = texturedCube->getRenderer()->getTexture();
+			ImGui::SetCursorPosX(50);
+			ImGui::Image(static_cast<void*>(this->materialDisplay->getShaderResource()), ImVec2(150, 150));
 
-			/*
-			ImGui::Image();
-			ImGui::TextWrapped("Material: " + ().c_str());
+			std::vector<std::string> splitPaths = splitPath(this->materialPath, '\\');
+			this->materialName = splitPaths[splitPaths.size() - 1];
+
+			std::string materialNameDisplay = "Material: " + this->materialName;
+			ImGui::Text(materialNameDisplay.c_str());
 
 			if (ImGui::Button("Add Material")) {
-				mIsPopupEnabled = !mIsPopupEnabled;
-				MaterialPanel* materialPanel = (MaterialPanel*)(UIManager::getInstance()->getPanel(UIManager::MATERIAL_PANEL));
-				UIManager::getInstance()->setActive(materialPanel, mIsPopupEnabled);
+				//mIsPopupEnabled = !mIsPopupEnabled;
+				materialScreen->setInspectorData(materialDisplay, materialPath);
+				UIManager::getInstance()->setActive(materialScreen, true);
 			}
-			*/
+		
 		}
 
 		if (ImGui::Button("Delete Object")) {
@@ -125,6 +135,17 @@ void InspectorWindow::draw() {
 	}
 
 	ImGui::End();
+}
+
+void InspectorWindow::setMaterialWindow(MaterialPanel* screen)
+{
+	materialScreen = screen;
+}
+
+void InspectorWindow::setMaterialWindowData(std::string materialPath)
+{
+	TexturedCube* texturedCube = static_cast<TexturedCube*>(selectedObject);
+	texturedCube->getRenderer()->setMaterialPath(materialPath);
 }
 
 void InspectorWindow::updatePanelInfo(AGameObject* selected_object) {
@@ -171,4 +192,15 @@ void InspectorWindow::updateObjectInfo(AGameObject* selected_object) {
 	selected_object->setPosition(mObjectPosition[0], mObjectPosition[1], mObjectPosition[2]);
 
 	ActionHistoryManager::getInstance()->endAction();
+}
+
+std::vector<std::string> InspectorWindow::splitPath(const std::string& s, char delim)
+{
+	std::stringstream ss(s);
+	std::string item;
+	std::vector<std::string> strings;
+	while (std::getline(ss, item, delim)) {
+		strings.push_back(std::move(item));
+	}
+	return strings;
 }
