@@ -50,21 +50,21 @@ ShaderLibrary::ShaderLibrary()
 	ShaderNames shaderNames;
 	ShaderData shaderData;
 
-	//AGraphicsEngine::getInstance()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
 	graphEngine->compileVertexShader(shaderNames.BASE_VERTEX_SHADER_NAME.c_str(), "vsmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
 	this->activeVertexShaders[shaderNames.BASE_VERTEX_SHADER_NAME] = graphEngine->createVertexShader(shaderData.shaderByteCode, shaderData.sizeShader);
+	//graphEngine->releaseCompiledVertexShader();
 
 	graphEngine->compilePixelShader(shaderNames.BASE_PIXEL_SHADER_NAME.c_str(), "psmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
-	//AGraphicsEngine::getInstance()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
 	this->activePixelShaders[shaderNames.BASE_PIXEL_SHADER_NAME] = graphEngine->createPixelShader(shaderData.shaderByteCode, shaderData.sizeShader);
+	//graphEngine->releaseCompiledVertexShader();
 
 	graphEngine->compileVertexShader(shaderNames.TEXTURED_VERTEX_SHADER_NAME.c_str(), "vsmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
-	//AGraphicsEngine::getInstance()->compileVertexShader(L"TextureVertexShader.hlsl", "vsmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
 	this->activeVertexShaders[shaderNames.TEXTURED_VERTEX_SHADER_NAME] = graphEngine->createVertexShader(shaderData.shaderByteCode, shaderData.sizeShader);
+	//graphEngine->releaseCompiledVertexShader();
 
 	graphEngine->compilePixelShader(shaderNames.TEXTURED_PIXEL_SHADER_NAME.c_str(), "psmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
-	//AGraphicsEngine::getInstance()->compilePixelShader(L"TexturePixelShader.hlsl", "psmain", &shaderData.shaderByteCode, &shaderData.sizeShader);
 	this->activePixelShaders[shaderNames.TEXTURED_PIXEL_SHADER_NAME] = graphEngine->createPixelShader(shaderData.shaderByteCode, shaderData.sizeShader);
+	//graphEngine->releaseCompiledVertexShader();
 
 	std::cout << "Shader library initialized. \n";
 }

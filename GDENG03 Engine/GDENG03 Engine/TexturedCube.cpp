@@ -22,8 +22,8 @@ TexturedCube::TexturedCube(std::string name) : AGameObject::AGameObject(name, TE
 	void* shaderByteCode = nullptr;
 	size_t shaderSize;
 
-	//AGraphicsEngine::getInstance()->compileVertexShader(L"TextureVertexShader.hlsl", "vsmain", &shaderByteCode, &shaderSize);
-	ShaderLibrary::getInstance()->requestVertexShaderData(shaderNames.TEXTURED_VERTEX_SHADER_NAME, &shaderByteCode, &shaderSize);
+	AGraphicsEngine::getInstance()->compileVertexShader(L"TextureVertexShader.hlsl", "vsmain", &shaderByteCode, &shaderSize);
+	//ShaderLibrary::getInstance()->requestVertexShaderData(shaderNames.TEXTURED_VERTEX_SHADER_NAME, &shaderByteCode, &shaderSize);
 
 	Vector3D position_list[] =
 	{
@@ -120,18 +120,17 @@ TexturedCube::TexturedCube(std::string name) : AGameObject::AGameObject(name, TE
 	mConstantBuffer->load(&datablock, sizeof(constant));
 
 
-	ADeviceContext* deviceContext = AGraphicsEngine::getInstance()->getImmediateDeviceContext();
-	deviceContext->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.TEXTURED_VERTEX_SHADER_NAME),
-	ShaderLibrary::getInstance()->getPixelShader(shaderNames.TEXTURED_PIXEL_SHADER_NAME));
+	//ADeviceContext* deviceContext = AGraphicsEngine::getInstance()->getImmediateDeviceContext();
+	//deviceContext->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.TEXTURED_VERTEX_SHADER_NAME),ShaderLibrary::getInstance()->getPixelShader(shaderNames.TEXTURED_PIXEL_SHADER_NAME));
 
-	/*
+	///*
 	this->mVertexShader = AGraphicsEngine::getInstance()->createVertexShader(shaderByteCode, shaderSize);
 	AGraphicsEngine::getInstance()->releaseCompiledVertexShader();
 
 	AGraphicsEngine::getInstance()->compilePixelShader(L"TexturePixelShader.hlsl", "psmain", &shaderByteCode, &shaderSize);
 	this->mPixelShader = AGraphicsEngine::getInstance()->createPixelShader(shaderByteCode, shaderSize);
 	AGraphicsEngine::getInstance()->releaseCompiledPixelShader();
-	*/
+	//*/
 }
 
 TexturedCube::~TexturedCube() {
@@ -166,14 +165,15 @@ void TexturedCube::draw(int width, int height) {
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(mConstantBuffer, this->mVertexShader);
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(mConstantBuffer, this->mPixelShader);
 
-	//AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexShader(this->mVertexShader);
-	//AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setPixelShader(this->mPixelShader);
-
+	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexShader(this->mVertexShader);
+	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setPixelShader(this->mPixelShader);
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setTexture(texture);
+
+	/*
 	ShaderNames shaderNames;
 	ADeviceContext* deviceContext = AGraphicsEngine::getInstance()->getImmediateDeviceContext();
 	deviceContext->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.TEXTURED_VERTEX_SHADER_NAME), ShaderLibrary::getInstance()->getPixelShader(shaderNames.TEXTURED_PIXEL_SHADER_NAME));
-
+	*/
 
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexBuffer(texVertexBuffer);
 	AGraphicsEngine::getInstance()->getImmediateDeviceContext()->setIndexBuffer(mIndexBuffer);
