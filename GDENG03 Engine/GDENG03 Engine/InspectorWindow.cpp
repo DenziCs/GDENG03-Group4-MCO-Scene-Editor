@@ -103,8 +103,6 @@ void InspectorWindow::draw() {
 			if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::EndDisabled();
 		}
 
-		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
-
 		if (selectedObject->getObjectType() == AGameObject::TEXTURED_CUBE) {
 			TexturedCube* texturedCube = static_cast<TexturedCube*>(selectedObject);
 			this->materialPath = texturedCube->getRenderer()->getMaterialPath();
@@ -125,6 +123,8 @@ void InspectorWindow::draw() {
 			}
 		
 		}
+
+		if (BackendManager::getInstance()->getEditorMode() != BackendManager::EDIT) ImGui::BeginDisabled();
 
 		if (ImGui::Button("Delete Object")) {
 			GameObjectManager::getInstance()->deleteObject(selectedObject);
